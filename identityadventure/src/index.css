@@ -66,6 +66,7 @@ body {
   margin: 0;
 }
 
+<<<<<<< Updated upstream
 h1,
 h2 {
   font-family: var(--heading);
@@ -108,4 +109,14 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+=======
+.addScoreBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+>>>>>>> Stashed changes
 }
