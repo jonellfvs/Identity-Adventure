@@ -80,9 +80,9 @@ export default function TrainSeating({ onNext }: TrainSeatingProps) {
     addScore({ [type]: val });
 
     // Flash animation
-    setFlashText(`+${val}${type}!`);
-    setShowFlash(false);
-    setTimeout(() => setShowFlash(true), 10);
+    // setFlashText(`+${val}${type}!`);
+    // setShowFlash(false);
+    // setTimeout(() => setShowFlash(true), 10);
 
     // Navigate after animation
     setTimeout(() => {
@@ -93,7 +93,7 @@ export default function TrainSeating({ onNext }: TrainSeatingProps) {
         // e.g. navigate("/next-scene") or router.push("/next-scene")
         alert(`Score saved! +${val}${type}\n\n(Pass an onNext prop or replace this with your router navigation)`);
       }
-    }, 1400);
+    }, 100);
   }
 
   const selectionLabel = selectedSeat
