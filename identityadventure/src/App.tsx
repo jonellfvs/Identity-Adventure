@@ -4,7 +4,7 @@ import './App.css'
 import { StartPage } from './scenes/StartPage'
 import { PresentationPage } from './scenes/PresentationPage'
 import { ChooseItemPage } from './scenes/ChooseItemPage'
-import { TrainSeatingPage } from './scenes/TrainSeatingPage'  
+import  TrainSeatingPage  from './scenes/TrainSeatingPage'  
 import { ResultPage } from './scenes/ResultPage'
 
 function App() {
