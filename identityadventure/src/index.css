@@ -9,13 +9,149 @@ body {
   background-color: #f0f0f0;
   color: #333;
 }
-.nextBtn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007BFF;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
 
+.presentationPage, .chooseItemPage, .trainSeatingPage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.nextBtn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 225px;
+  height: 120px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.ts-page {
+  min-height: 100vh;
+  background-color: #f5e6c8;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(180, 160, 100, 0.18) 28px,
+      rgba(180, 160, 100, 0.18) 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 28px,
+      rgba(180, 160, 100, 0.18) 28px,
+      rgba(180, 160, 100, 0.18) 30px
+    );
+  font-family: 'Patrick Hand', cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 16px 24px;
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────────
+   PROMPT BUBBLE
+───────────────────────────────────────────── */
+.ts-prompt-wrapper {
+  width: 100%;
+  max-width: 680px;
+  margin-bottom: 18px;
+}
+
+.ts-prompt-bubble {
+  background: #fff9e6;
+  border: 3.5px solid #2a1a0e;
+  border-radius: 16px 22px 18px 20px / 20px 16px 22px 18px;
+  padding: 14px 22px 16px;
+  position: relative;
+  box-shadow: 5px 5px 0 #2a1a0e;
+  transform: rotate(-0.8deg);
+}
+
+/* Speech bubble tail — outline */
+.ts-prompt-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 20px solid #2a1a0e;
+}
+
+/* Speech bubble tail — fill */
+.ts-prompt-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 16px solid #fff9e6;
+  z-index: 1;
+}
+
+.ts-prompt-label {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 11px;
+  color: #e05a00;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.ts-prompt-text {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 22px;
+  color: #2a1a0e;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.ts-prompt-sub {
+  font-size: 14px;
+  color: #6b4c2a;
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* ─────────────────────────────────────────────
+   TRAIN SCENE
+───────────────────────────────────────────── */
+.ts-train-scene {
+  width: 100%;
+  max-width: 720px;
+  margin-top: 32px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* ─────────────────────────────────────────────
+   KEYFRAMES
+───────────────────────────────────────────── */
+@keyframes pop-in {
+  0%   { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+@keyframes flash-pop {
+  0%   { transform: translate(-50%, -50%) scale(0);   opacity: 0; }
+  20%  { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  70%  { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
 }
