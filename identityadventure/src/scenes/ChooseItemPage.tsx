@@ -1,5 +1,5 @@
 import { useMBTI } from '../context/ScoreContext';
-import { NextButton } from '../components/nextButton';
+import { SceneLayout } from '../components/sceneLayout';
 
 
 type ChooseItemPageProps = {
@@ -7,16 +7,19 @@ type ChooseItemPageProps = {
 };
 
 export function ChooseItemPage({ onNext }: ChooseItemPageProps) {
-  const { scores, addScore } = useMBTI();
+  //const { scores, addScore } = useMBTI();
 
   return (
-    <div className="chooseItemPage">
-      <h1>Youre running late to your first intership interview!</h1>
-      <p>Quickly decide what item to bring!</p>
-      <button className="addScoreBtn" onClick={() => addScore({ 'E': 1 })}>Test Add Score</button>
-      <p>E Score: {scores.E}</p>
-
-      <NextButton onClick={onNext} />
-    </div>
-  );
+      <SceneLayout
+        label="Choose item"
+        title="Youre running late to your first intership interview!"
+        subtitle="Yu have 5 seconds to decide what item to bring!"
+        hint="Hover to preview · Click on the image to select"
+        onNext={onNext}
+      >
+        <div className="scene-content">
+          {/* your game/question content goes here */}
+        </div>
+      </SceneLayout>
+    );
 }
