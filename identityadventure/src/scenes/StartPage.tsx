@@ -6,7 +6,6 @@ type StartPageProps = {
 
 export function StartPage({ onNext }: StartPageProps) {
   const { scores, addScore } = useMBTI();
-   
   return (
     <div>
       <h1>Start Page</h1>
