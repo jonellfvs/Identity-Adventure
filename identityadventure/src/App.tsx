@@ -31,10 +31,6 @@ function App() {
       {scene === "train-seating" && (
         <TrainSeatingPage onNext={() => setScene("result")} />
       )}
-
-
-
-      
     </>
   );
 }
