@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&display=swap');
+
+/* ─────────────────────────────────────────────
+   PAGE
+───────────────────────────────────────────── */
+.ts-page {
+  min-height: 100vh;
+  background-color: #f5e6c8;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(180, 160, 100, 0.18) 28px,
+      rgba(180, 160, 100, 0.18) 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 28px,
+      rgba(180, 160, 100, 0.18) 28px,
+      rgba(180, 160, 100, 0.18) 30px
+    );
+  font-family: 'Patrick Hand', cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 16px 24px;
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────────
+   PROMPT BUBBLE
+───────────────────────────────────────────── */
+.ts-prompt-wrapper {
+  width: 100%;
+  max-width: 680px;
+  margin-bottom: 18px;
+}
+
+.ts-prompt-bubble {
+  background: #fff9e6;
+  border: 3.5px solid #2a1a0e;
+  border-radius: 16px 22px 18px 20px / 20px 16px 22px 18px;
+  padding: 14px 22px 16px;
+  position: relative;
+  box-shadow: 5px 5px 0 #2a1a0e;
+  transform: rotate(-0.8deg);
+}
+
+/* Speech bubble tail — outline */
+.ts-prompt-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 20px solid #2a1a0e;
+}
+
+/* Speech bubble tail — fill */
+.ts-prompt-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 16px solid #fff9e6;
+  z-index: 1;
+}
+
+.ts-prompt-label {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 11px;
+  color: #e05a00;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.ts-prompt-text {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 22px;
+  color: #2a1a0e;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.ts-prompt-sub {
+  font-size: 14px;
+  color: #6b4c2a;
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* ─────────────────────────────────────────────
+   TRAIN SCENE
+───────────────────────────────────────────── */
+.ts-train-scene {
+  width: 100%;
+  max-width: 720px;
+  margin-top: 32px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/* Real train bg image (swap in when ready) */
+.ts-train-bg {
+  width: 100%;
+  max-width: 680px;
+  display: block;
+}
+
+/* ── CSS placeholder train (remove when using train_seating.png) ── */
+.ts-train-placeholder {
+  width: 100%;
+  max-width: 680px;
+  height: 420px;
+  background: #d4e8f7;
+  border: 4px solid #2a1a0e;
+  border-radius: 28px 28px 14px 14px / 18px 18px 10px 10px;
+  position: relative;
+  box-shadow: 6px 6px 0 #2a1a0e;
+  overflow: hidden;
+}
+
+.ts-train-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  background: #4a90d9;
+  border-bottom: 3px solid #2a1a0e;
+}
+
+.ts-train-label {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Permanent Marker', cursive;
+  font-size: 15px;
+  color: #fff;
+  white-space: nowrap;
+  letter-spacing: 3px;
+  z-index: 1;
+}
+
+.ts-window-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 18px;
+  margin-top: 48px;
+}
+
+.ts-win {
+  width: 80px;
+  height: 54px;
+  background: linear-gradient(135deg, #a8d4f0 40%, #cce8fa);
+  border: 3px solid #2a1a0e;
+  border-radius: 10px 10px 6px 6px;
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.5);
+}
+
+.ts-floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  background: #b8860b;
+  border-top: 3px solid #2a1a0e;
+  opacity: 0.35;
+}
+
+/* ─────────────────────────────────────────────
+   SEATS OVERLAY
+   Adjust top/left/width once you add train_seating.png
+───────────────────────────────────────────── */
+.ts-seats-overlay {
+  position: absolute;
+  top: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ts-seat-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.ts-seat-spacer {
+  height: 80px; /* space between the two sides of the train */
+}
+
+/* ─────────────────────────────────────────────
+   INDIVIDUAL SEAT
+───────────────────────────────────────────── */
+.seat {
+  width: 72px;
+  height: 72px;
+  position: relative;
+  flex-shrink: 0;
+  cursor: default;
+}
+
+/* Real seat image (swap in when ready) */
+.seat-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── CSS fallback seat shape (remove when using seat images) ── */
+.seat-shape {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 10px 6px 6px;
+  border: 3px solid #2a1a0e;
+  position: relative;
+  transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.seat-shape::after {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 4px;
+  right: 4px;
+  height: 14px;
+  border-radius: 5px 5px 0 0;
+  border: 3px solid #2a1a0e;
+  border-bottom: none;
+}
+
+/* ── OCCUPIED ── */
+.seat--occupied {
+  cursor: not-allowed;
+}
+
+.seat--occupied .seat-shape {
+  background: #e8c49a;
+}
+
+.seat--occupied .seat-shape::before {
+  content: '👤';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 35px;
+  line-height: 1;
+}
+
+/* ── EMPTY ── */
+.seat--empty {
+  cursor: pointer;
+}
+
+.seat--empty .seat-shape {
+  background: #f0ead0;
+}
+
+.seat--empty:hover .seat-shape {
+  transform: translateY(-4px) rotate(-2deg);
+  background: #ffd966;
+  box-shadow: 3px 3px 0 #2a1a0e;
+}
+
+/* ── SELECTED ── */
+.seat--selected .seat-shape {
+  background: #ff6b6b;
+  border-color: #c0392b;
+  box-shadow: 4px 4px 0 #c0392b;
+  animation: seat-wiggle 0.35s ease;
+}
+
+.seat--selected .seat-shape::after {
+  border-color: #c0392b;
+  background: #ff6b6b;
+}
+
+.seat--selected .seat-shape::before {
+  content: '★';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  color: #fff;
+}
+
+@keyframes seat-wiggle {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(-6deg); }
+  50%  { transform: rotate(6deg); }
+  75%  { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* ─────────────────────────────────────────────
+   HINT
+───────────────────────────────────────────── */
+.ts-hint {
+  font-size: 13px;
+  color: #6b4c2a;
+  text-align: center;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────────
+   BOTTOM CONTROLS
+───────────────────────────────────────────── */
+.ts-btn-area {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.ts-selection-info {
+  font-size: 15px;
+  color: #2a1a0e;
+  background: #fff9e6;
+  border: 2.5px solid #2a1a0e;
+  border-radius: 10px;
+  padding: 8px 18px;
+  box-shadow: 3px 3px 0 #2a1a0e;
+  text-align: center;
+  animation: pop-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ts-btn-next {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 20px;
+  background: #2a1a0e;
+  color: #ffd966;
+  border: none;
+  padding: 14px 44px;
+  border-radius: 12px 16px 14px 10px / 10px 14px 16px 12px;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 #e05a00;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.ts-btn-next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: 2px 2px 0 #999;
+}
+
+.ts-btn-next:not(:disabled):hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 #e05a00;
+}
+
+.ts-btn-next:not(:disabled):active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 #e05a00;
+}
+
+/* ─────────────────────────────────────────────
+   SCORE FLASH OVERLAY
+───────────────────────────────────────────── */
+.ts-score-flash {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-family: 'Permanent Marker', cursive;
+  font-size: 64px;
+  color: #fff;
+  background: #2a1a0e;
+  border: 5px solid #ffd966;
+  border-radius: 20px;
+  padding: 20px 40px;
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: 8px 8px 0 #e05a00;
+}
+
+.ts-score-flash--show {
+  animation: flash-pop 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* ─────────────────────────────────────────────
+   KEYFRAMES
+───────────────────────────────────────────── */
+@keyframes pop-in {
+  0%   { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+@keyframes flash-pop {
+  0%   { transform: translate(-50%, -50%) scale(0);   opacity: 0; }
+  20%  { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  70%  { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+}
