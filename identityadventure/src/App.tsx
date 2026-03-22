@@ -3,6 +3,7 @@ import './App.css'
 
 import { StartPage } from './scenes/StartPage'
 import { PresentationPage } from './scenes/PresentationPage'
+import  PresentationSlide  from './scenes/PresentationSlide'
 import ChooseItemPage from './scenes/ChooseItemPage'
 import TrainSeatingPage from './scenes/TrainSeatingPage'  
 import BusSeatingPage from './scenes/BusSeatingPage'
