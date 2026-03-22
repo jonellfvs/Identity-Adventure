@@ -105,7 +105,7 @@ export default function BusSeating({ onNext }: BusSeatingProps) {
       {/* ── BUS SCENE ── */}
       <div className="bs-bus-scene">
         <div className="bs-bus-placeholder">
-          <span className="bs-bus-label">45 - TO CSULB</span>
+          <span className="bs-bus-label">45 - - LONG BEACH - - TO CSULB</span>
           <div className="bs-window-row">
             <div className="bs-win" />
             <div className="bs-win" />
