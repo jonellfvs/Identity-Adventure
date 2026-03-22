@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&display=swap');
+
+/* ─────────────────────────────────────────────
+   PAGE  — 3-cell grid
+   ┌─────────────────────────┐
+   │        TOP (full)       │
+   ├────────────┬────────────┤
+   │  BTN LEFT  │  BTN RIGHT │
+   └────────────┴────────────┘
+───────────────────────────────────────────── */
+.ee-page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f5e6c8;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(180, 160, 100, 0.18) 28px,
+      rgba(180, 160, 100, 0.18) 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 28px,
+      rgba(180, 160, 100, 0.18) 28px,
+      rgba(180, 160, 100, 0.18) 30px
+    );
+  font-family: 'Patrick Hand', cursive;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50vh 50vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─────────────────────────────────────────────
+   TOP PANEL  — spans both columns
+───────────────────────────────────────────── */
+.ee-top {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 4px solid #2a1a0e;
+  gap: 20px;
+  position: relative;
+}
+
+/* ─────────────────────────────────────────────
+   PROMPT BUBBLE
+───────────────────────────────────────────── */
+.ee-prompt-bubble {
+  background: #fff9e6;
+  border: 3.5px solid #2a1a0e;
+  border-radius: 16px 22px 18px 20px / 20px 16px 22px 18px;
+  padding: 12px 28px 14px;
+  position: relative;
+  box-shadow: 5px 5px 0 #2a1a0e;
+  transform: rotate(-0.5deg);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  bottom: -132px;
+  transform: scale(1.3) rotate(-0.5deg);
+}
+
+.ee-prompt-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 20px solid #2a1a0e;
+}
+
+.ee-prompt-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 16px solid #fff9e6;
+  z-index: 1;
+}
+
+.ee-prompt-label {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 11px;
+  color: #e05a00;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.ee-prompt-text {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 22px;
+  color: #2a1a0e;
+  line-height: 1.3;
+}
+
+.ee-prompt-sub {
+  font-size: 14px;
+  color: #6b4c2a;
+  margin-top: 5px;
+}
+
+
+/* ─────────────────────────────────────────────
+   BOTTOM CHOICE BUTTONS
+───────────────────────────────────────────── */
+.ee-choice-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  font-family: inherit;
+  grid-row: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.12s, transform 0.1s;
+}
+
+.ee-choice-btn:focus { outline: none; }
+
+.ee-choice-left {
+  grid-column: 1;
+  background: #fff9e6;
+  border-right: 3px solid #2a1a0e;
+}
+
+.ee-choice-right {
+  grid-column: 2;
+  background: #fff0cc;
+}
+
+.ee-choice-btn:active {
+  transform: scale(0.985);
+}
+
+/* image fills button, blurred */
+.ee-choice-fight,
+.ee-choice-hide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(3px) brightness(0.6);
+  transition: filter 0.2s;
+}
+
+/* overlay text */
+.ee-choice-btn::after {
+  content: attr(data-label);
+  position: absolute;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 72px;
+  color: #fff;
+  text-shadow: 4px 4px 0 #2a1a0e, -2px -2px 0 #2a1a0e;
+  pointer-events: none;
+  z-index: 2;
+  transition: transform 0.15s, color 0.15s;
+}
+
+/* hover: less blur, tint, text pops */
+.ee-choice-btn:hover .ee-choice-fight,
+.ee-choice-btn:hover .ee-choice-hide {
+  filter: blur(1px) brightness(0.45);
+  background: none; /* let the image handle color */
+}
+
+.ee-choice-btn:hover {
+  background: transparent; /* don't override image */
+}
+
+.ee-choice-btn:hover::after {
+  transform: scale(1.1) rotate(-2deg);
+  color: #ffd966;
+}
+
+
+/* Enemy */
+.ee-top {
+  overflow: hidden;
+  position: relative;
+}
+
+.ee-top::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/images/enemy4.png');
+  background-size: cover;
+  background-position: center;
+  animation: ee-slide-in 1s forwards;
+}
+
+@keyframes ee-slide-in {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+
+
+/* Hide until enemy shows up */
+.ee-choice-btn, .ee-prompt-bubble, .ee-choice-hide, .ee-choice-fight {
+  opacity: 0;
+  animation: ee-fade-in 0.5s forwards;
+  animation-delay: 1s;
+  /* keep your existing properties below */
+}
+
+@keyframes ee-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

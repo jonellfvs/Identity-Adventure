@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&display=swap');
 
-/* ─────────────────────────────────────────────
-   PAGE
-───────────────────────────────────────────── */
+/* PAGE */
 .bs-page {
   min-height: 100vh;
   background-color: #f5e6c8;
@@ -30,9 +28,7 @@
   position: relative;
 }
 
-/* ─────────────────────────────────────────────
-   PROMPT BUBBLE
-───────────────────────────────────────────── */
+/* PROMPT BUBBLE */
 .bs-prompt-wrapper {
   width: 100%;
   max-width: 680px;
@@ -104,9 +100,7 @@
   margin-top: 6px;
 }
 
-/* ─────────────────────────────────────────────
-   bus SCENE
-───────────────────────────────────────────── */
+/* Bus Scene */
 .bs-bus-scene {
   width: 100%;
   max-width: 680px;
@@ -185,10 +179,7 @@
   padding: 0 18px;
 }
 
-/* ─────────────────────────────────────────────
-   SEATS OVERLAY
-   Adjust top/left/width once you add bus_seating.png
-───────────────────────────────────────────── */
+/* SEATS OVERLAY */
 .bs-seats-overlay {
   position: absolute;
   top: 26px;
@@ -212,9 +203,7 @@
   height: 60px; /* space between the two sides of the bus */
 }
 
-/* ─────────────────────────────────────────────
-   INDIVIDUAL SEAT
-───────────────────────────────────────────── */
+/* INDIVIDUAL SEAT */
 .busSeat {
   width: 72px;
   height: 72px;
@@ -231,7 +220,7 @@
   display: block;
 }
 
-/* ── CSS fallback seat shape (remove when using seat images) ── */
+/* CSS fallback seat shape */
 .busSeat-shape {
   display: block;
   width: 100%;
@@ -255,7 +244,7 @@
   border-bottom: none;  
 }
 
-/* ── OCCUPIED ── */
+/* Occupied */
 .busSeat--occupied {
   cursor: not-allowed;
 }
@@ -274,7 +263,7 @@
   line-height: 1;
 }
 
-/* ── EMPTY ── */
+/* Empty */
 .busSeat--empty {
   cursor: pointer;
 }
@@ -290,7 +279,7 @@
   transform: rotate(-90deg);
 }
 
-/* ── SELECTED ── */
+/* Selected */
 .busSeat--selected .busSeat-shape {
   background: #ff6b6b;
   border-color: #c0392b;
@@ -322,9 +311,7 @@
   100% { transform: rotate(-90deg); }
 }
 
-/* ─────────────────────────────────────────────
-   HINT
-───────────────────────────────────────────── */
+/* Hint / Instruction */
 .bs-hint {
   font-size: 13px;
   color: #6b4c2a;
@@ -333,7 +320,7 @@
   font-style: italic;
 }
 
-/* BOTTOM CONTROLS */
+/* Bottom Controls */
 .bs-btn-area {
   display: flex;
   position: fixed;
@@ -384,33 +371,7 @@
   box-shadow: 2px 2px 0 #e05a00;
 }
 
-/* ─────────────────────────────────────────────
-   SCORE FLASH OVERLAY
-───────────────────────────────────────────── */
-.bs-score-flash {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  font-family: 'Permanent Marker', cursive;
-  font-size: 64px;
-  color: #fff;
-  background: #2a1a0e;
-  border: 5px solid #ffd966;
-  border-radius: 20px;
-  padding: 20px 40px;
-  z-index: 100;
-  pointer-events: none;
-  box-shadow: 8px 8px 0 #e05a00;
-}
-
-.bs-score-flash--show {
-  animation: flash-pop 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-/* ─────────────────────────────────────────────
-   KEYFRAMES
-───────────────────────────────────────────── */
+/* Kayframes */
 @keyframes pop-in {
   0%   { transform: scale(0.5); opacity: 0; }
   100% { transform: scale(1);   opacity: 1; }

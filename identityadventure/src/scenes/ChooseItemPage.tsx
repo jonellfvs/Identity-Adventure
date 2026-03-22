@@ -3,7 +3,7 @@
  *
  * Room image: public/room.png  (1536 × 1024 px)
  * Hotspot positions measured from the actual image.
- * No external packages needed — works with React 19.
+ * No external packages needed.
  */
 
 import { useState, useRef } from "react";
@@ -79,26 +79,15 @@ export default function ChooseItem({ onNext }: ChooseItemProps) {
 
   const [selectedId, setSelectedId] = useState<ItemId | null>(null);
   const [hoveredId,  setHoveredId]  = useState<ItemId | null>(null);
-  const [flashText,  setFlashText]  = useState("");
-  const [showFlash,  setShowFlash]  = useState(false);
 
   const imgRef = useRef<HTMLImageElement>(null);
 
   function commitAndAdvance(scoreType: string, scoreVal: number) {
     addScore({ [scoreType]: scoreVal });
 
-    setFlashText(`+${scoreVal}${scoreType}!`);
-    setShowFlash(false);
-    setTimeout(() => setShowFlash(true), 10);
-
-    setTimeout(() => {
-      if (onNext) {
+    if (onNext) {
         onNext();
-      } else {
-        // Replace with your router: navigate("/next-scene")
-        alert(`Score saved! +${scoreVal}${scoreType}`);
-      }
-    }, 1400);
+    }
   }
 
   function handleHotspotClick(spot: HotspotDef) {
@@ -213,15 +202,9 @@ export default function ChooseItem({ onNext }: ChooseItemProps) {
           disabled={!selectedId}
           onClick={handleNext}
         >
-          Next Stop →
+          Head Out →
         </button>
       </div>
-
-      {/* ── SCORE FLASH ── */}
-      <div className={`ci-score-flash${showFlash ? " ci-score-flash--show" : ""}`}>
-        {flashText}
-      </div>
-
     </div>
   );
 }

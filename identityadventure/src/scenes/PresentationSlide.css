@@ -27,6 +27,7 @@
   align-items: center;
   padding: 18px 16px 32px;
   overflow-x: hidden;
+  position: relative;
 }
 
 .ps-content {
@@ -34,8 +35,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
+  justify-content: center;    
+  gap: 180px;
   max-width: 1200px;
+  width: 100%;              
 }
 
 /* ─────────────────────────────────────────────
@@ -54,7 +57,8 @@
   padding: 14px 22px 16px;
   position: relative;
   box-shadow: 5px 5px 0 #2a1a0e;
-  transform: rotate(-0.6deg);
+  transform: scale(1.3) rotate(-0.6deg);
+  margin-top: 16px;
 }
 
 .ps-prompt-bubble::after {
@@ -128,6 +132,7 @@
   transform: rotate(0.4deg);
   overflow: hidden;
   margin-top: 16px;
+  transform: scale(1.2)
 }
 
 /* Scuffed corner doodles */
@@ -212,6 +217,7 @@
   color: #6b4c2a;
 }
 
+
 /* ─────────────────────────────────────────────
    DROP SLOTS
 ───────────────────────────────────────────── */
@@ -225,11 +231,11 @@
 
 .ps-drop-slot {
   flex: 1;
-  min-width: 160px;
+  min-width: 180px;
   /* min-width: unset; */
   max-width: fit-content;
   /* max-width: 550px; */
-  min-height: 150px;
+  min-height: 160px;
   /* min-height: unset; */
   height: fit-content;
   
@@ -274,14 +280,6 @@
   /* position: relative; */
 }
 
-.ps-slot-content #spreadsheet,
-.ps-item-img #spreadsheet {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  /* max-width: 400px; */
-}
 
 .ps-slot-emoji {
   font-size: 26px;
@@ -335,6 +333,7 @@
   width: 100%;
   max-width: 640px;
   margin-top: 28px;
+  transform: scale(1.2);
 }
 
 .ps-items-label {
@@ -347,7 +346,7 @@
 
 .ps-items-tray {
   display: flex;
-  gap: 12px;
+  gap: 32px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -358,7 +357,7 @@
   align-items: center;
   gap: 6px;
   /* padding: 12px 14px; */
-  padding: 8px;
+  padding: 4px;
   background: #fff9e6;
   border: 3px solid #2a1a0e;
   border-radius: 12px 16px 14px 10px / 10px 14px 16px 12px;
@@ -373,9 +372,15 @@
 }
 
 .ps-item-card #spreadsheet {
-  max-width: 400px;
-  max-height: unset;
-  width: 100%;
+  width: 300px;
+  height: auto;
+  display: block;
+}
+
+/* when dropped on the slide */
+.ps-slot-content #spreadsheet {
+  width: 460px;
+  height: auto;
   display: block;
 }
 
@@ -402,17 +407,9 @@
 }
 
 .ps-item-img {
-  max-width: 200px;
   max-height: 200px;
   /* object-fit: contain; */
   /* line-height: 1; */
-}
-
-.ps-item-img #spreadsheet {
-  max-width: 400px;
-  max-height: unset;
-  width: 100%;
-  display: block;
 }
 
 .ps-item-label {
@@ -443,11 +440,12 @@
    BOTTOM CONTROLS
 ───────────────────────────────────────────── */
 .ps-btn-area {
-  margin-top: 28px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: fixed;
+  right: 60px;  
+  bottom: 40px;
   gap: 10px;
+  z-index: 50;
 }
 
 .ps-btn-hint {
@@ -485,38 +483,3 @@
   box-shadow: 2px 2px 0 #e05a00;
 }
 
-/* ─────────────────────────────────────────────
-   SCORE FLASH
-───────────────────────────────────────────── */
-.ps-score-flash {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  font-family: 'Permanent Marker', cursive;
-  font-size: 52px;
-  color: #fff;
-  background: #2a1a0e;
-  border: 5px solid #ffd966;
-  border-radius: 20px;
-  padding: 20px 40px;
-  z-index: 100;
-  pointer-events: none;
-  box-shadow: 8px 8px 0 #e05a00;
-  white-space: pre;
-  text-align: center;
-}
-
-.ps-score-flash--show {
-  animation: ps-flash-pop 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-/* ─────────────────────────────────────────────
-   KEYFRAMES
-───────────────────────────────────────────── */
-@keyframes ps-flash-pop {
-  0%   { transform: translate(-50%, -50%) scale(0);   opacity: 0; }
-  20%  { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
-  70%  { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-}
