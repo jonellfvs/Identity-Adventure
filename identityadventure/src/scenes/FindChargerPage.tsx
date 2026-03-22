@@ -112,7 +112,7 @@ export default function FindCharger({ onNext }: FindChargerProps) {
         <div className="fc-prompt-bubble">
           <p className="fc-prompt-label">🗺️ At the Crossroads</p>
           <p className="fc-prompt-text">
-            Find a way to find your charger.<br />Which way do you go?
+            Find a way to charge yor phone.<br />Which way do you go?
           </p>
           <p className="fc-prompt-sub">
             Click a path to choose your direction!
