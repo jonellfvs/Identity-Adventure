@@ -9,7 +9,8 @@ import { ResultPage } from './scenes/ResultPage'
 import { OtomePage } from './scenes/OtomePage'
 import SchedPlannerPage from './scenes/SchedPlannerPage'
 import BusSeating from './scenes/BusSeatingPage'
-import EnemyEncounter from './scenes/EnemyEncounter'
+import EnemyEncounter from './scenes/EnemyEncounterPage'
+import TowerBloxx from './scenes/TowerBloxxPage'
 
 
 function InterludeScreen({ onDone, text }: { onDone: () => void; text: string }) {
@@ -24,7 +25,7 @@ function InterludeScreen({ onDone, text }: { onDone: () => void; text: string })
 
 function App() {
   // CHANGE BACK TO INTRO BEFORE SUBMISSION
-  const [scene, setScene] = useState("intro");
+  const [scene, setScene] = useState("bus-seating");
 
   return (
     <>
@@ -70,7 +71,11 @@ function App() {
       )}
 
       {scene === "enemy-encounter" && (
-        <EnemyEncounter onNext={() => setScene("Interlude3")} />
+        <EnemyEncounter onNext={() => setScene("tower-bloxx")} />
+      )}
+
+      {scene === "tower-bloxx" && (
+        <TowerBloxx onNext={() => setScene("result")} />
       )}
 
       {scene === "Interlude3" && (
