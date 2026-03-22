@@ -1,0 +1,17 @@
+.ot-page {
+    min-height: 100vh;
+    background-image: url(C:\Users\kimbe\vscode_folders\spring2026\beachhacks9.0\Identity-Adventure\identityadventure\src\assets\images\otome_train_background.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.elbee {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.elbee-img {
+    width: 750px;  /* adjust to taste */
+    height: auto;  /* keeps aspect ratio */
+}

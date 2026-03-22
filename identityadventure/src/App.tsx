@@ -7,6 +7,7 @@ import ChooseItemPage from './scenes/ChooseItemPage'
 import TrainSeatingPage from './scenes/TrainSeatingPage'  
 import BusSeatingPage from './scenes/BusSeatingPage'
 import { ResultPage } from './scenes/ResultPage'
+import { OtomePage } from './scenes/OtomePage'
 
 function App() {
   const [scene, setScene] = useState("intro");
@@ -22,7 +23,7 @@ function App() {
       )}
 
       {scene === "presentation" && (
-        <PresentationPage onNext={() => setScene("choose-item")} />
+        <PresentationSlide onNext={() => setScene("choose-item")} />
       )}
 
       {scene === "choose-item" && (
