@@ -8,8 +8,8 @@ import  TrainSeatingPage  from './scenes/TrainSeatingPage'
 import { ResultPage } from './scenes/ResultPage'
 import { OtomePage } from './scenes/OtomePage'
 import SchedPlannerPage from './scenes/SchedPlannerPage'
-import EnemyEncounter from './scenes/EnemyEncounter'
-
+import EnemyEncounter from './scenes/EnemyEncounterPage'
+import FindCharger from './scenes/FindChargerPage'
 
 function InterludeScreen({ onDone }: { onDone: () => void }) {
   // Auto-advance after animation completes (match duration to CSS)
@@ -23,12 +23,12 @@ function InterludeScreen({ onDone }: { onDone: () => void }) {
 
 function App() {
   // CHANGE BACK TO INTRO BEFORE SUBMISSION
-  const [scene, setScene] = useState("train-seating");
+  const [scene, setScene] = useState("intro");
 
   return (
     <>
       {scene === "intro" && (
-        <StartPage onNext={() => setScene("enemy-encounter")} />
+        <StartPage onNext={() => setScene("find-charger")} />
       )}
 
       {scene === "result" && (
@@ -54,6 +54,14 @@ function App() {
 
       {scene === "otome" && (
         <OtomePage onNext={() => setScene("result")} />
+      )}
+
+      {scene === "enemy-encounter" && (
+        <EnemyEncounter onNext={() => setScene("result")} />
+      )}
+
+      {scene === "find-charger" && (
+        <FindCharger onNext={() => setScene("result")} />
       )}
     </>
   );
