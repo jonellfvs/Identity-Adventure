@@ -146,9 +146,9 @@ export function ResultPage({ onRestart }: ResultPageProps) {
           </div>
 
           <div className="rp-identity">
-            <span className="rp-type-emoji">{data.emoji}</span>
-            <p className="rp-type-code" style={{ color: data.color }}>{type}</p>
-            <p className="rp-type-title">{data.title}</p>
+            {/*<span className="rp-type-emoji">{data.emoji}</span>
+            <p className="rp-type-code" style={{ color: data.color }}>{type}</p> */}
+            <p className="rp-type-title">{data.emoji}{data.title}</p>
             <p className="rp-type-tagline">"{data.tagline}"</p>
           </div>
 

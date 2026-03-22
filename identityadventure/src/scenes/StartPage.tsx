@@ -9,6 +9,7 @@ export function StartPage({ onNext }: StartPageProps) {
     <div className="sp-page">
 
       {/* Scattered background doodles */}
+      <div className="sp-doodles"> 
       <span className="sp-doodle sp-doodle--1">★</span>
       <span className="sp-doodle sp-doodle--2">✦</span>
       <span className="sp-doodle sp-doodle--3">~</span>
@@ -17,6 +18,7 @@ export function StartPage({ onNext }: StartPageProps) {
       <span className="sp-doodle sp-doodle--6">~</span>
       <span className="sp-doodle sp-doodle--7">★</span>
       <span className="sp-doodle sp-doodle--8">✦</span>
+      </div>
 
       <div className="sp-card">
 
@@ -50,10 +52,10 @@ export function StartPage({ onNext }: StartPageProps) {
 
         {/* Instructions */}
         <div className="sp-instructions">
-          <p className="sp-instructions-text">
-            <div className="sp-instructions-icons">
+          <div className="sp-instructions-icons">
             <span title="Discover yourself">🧠</span>
           </div>
+          <p className="sp-instructions-text">
             Imagine yourself in each scenario<br />
             as actions you would take in real life!
           </p>

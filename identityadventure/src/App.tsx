@@ -12,6 +12,7 @@ import BusSeating from './scenes/BusSeatingPage'
 import EnemyEncounter from './scenes/EnemyEncounterPage'
 import FindChargerPage from './scenes/FindChargerPage'
 import NotificationPage from './scenes/NotificationPage'
+import TowerBloxx from './scenes/TowerBloxxPage'
 
 
 function InterludeScreen({ onDone, text }: { onDone: () => void; text: string }) {
@@ -26,16 +27,12 @@ function InterludeScreen({ onDone, text }: { onDone: () => void; text: string })
 
 function App() {
   // CHANGE BACK TO INTRO BEFORE SUBMISSION
-  const [scene, setScene] = useState("find-charger");
+  const [scene, setScene] = useState("intro");
 
   return (
-    <>
+    <div style={{ width: "100vw", minHeight: "100vh", overflow: "hidden" }}>
       {scene === "intro" && (
         <StartPage onNext={() => setScene("presentation")} />
-      )}
-
-      {scene === "result" && (
-        <ResultPage onRestart={() => setScene("intro")} />
       )}
 
       {scene === "presentation" && (
@@ -94,7 +91,11 @@ function App() {
       {scene === "notification" && (
         <NotificationPage onNext={() => setScene("result")} />
       )}
-    </>
+
+      {scene === "result" && (
+        <ResultPage onRestart={() => setScene("intro")} />
+      )}
+    </div>
   );
 }
 
