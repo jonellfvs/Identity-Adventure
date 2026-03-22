@@ -32,9 +32,9 @@ export function useMBTIScore() {
 
   function getResult(): string {
     return (
-      (scores.E >= scores.I ? "E" : "I") +
-      (scores.N >= scores.S ? "N" : "S") +
-      (scores.T >= scores.F ? "T" : "F") +
+      (scores.I >= scores.E ? "I" : "E") +
+      (scores.S >= scores.N ? "S" : "N") +
+      (scores.F >= scores.T ? "F" : "T") +
       (scores.J >= scores.P ? "J" : "P")
     );
   }

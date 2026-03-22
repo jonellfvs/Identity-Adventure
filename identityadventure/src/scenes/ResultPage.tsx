@@ -169,9 +169,9 @@ export function ResultPage({ onRestart }: ResultPageProps) {
           <div className="rp-card rp-card--bars">
             <h3 className="rp-card-title">Results breakdown</h3>
             <div className="rp-bars">
-              <ScoreBar leftLabel="E" rightLabel="I" leftVal={scores.E} rightVal={scores.I} color={data.color} delay={300} />
-              <ScoreBar leftLabel="N" rightLabel="S" leftVal={scores.N} rightVal={scores.S} color={data.color} delay={450} />
-              <ScoreBar leftLabel="T" rightLabel="F" leftVal={scores.T} rightVal={scores.F} color={data.color} delay={600} />
+              <ScoreBar leftLabel="I" rightLabel="E" leftVal={scores.I} rightVal={scores.E} color={data.color} delay={300} />
+              <ScoreBar leftLabel="S" rightLabel="N" leftVal={scores.S} rightVal={scores.N} color={data.color} delay={450} />
+              <ScoreBar leftLabel="F" rightLabel="T" leftVal={scores.F} rightVal={scores.T} color={data.color} delay={600} />
               <ScoreBar leftLabel="J" rightLabel="P" leftVal={scores.J} rightVal={scores.P} color={data.color} delay={750} />
             </div>
           </div>
@@ -194,7 +194,7 @@ export function ResultPage({ onRestart }: ResultPageProps) {
           <button className="rp-btn-restart" onClick={handleRestart}>
             ↩ Play Again
           </button>
-          
+
         </div>
       </div>
     </div>
