@@ -3,9 +3,11 @@ import './App.css'
 
 import { StartPage } from './scenes/StartPage'
 import { PresentationPage } from './scenes/PresentationPage'
+import  PresentationSlide  from './scenes/PresentationSlide'
 import { ChooseItemPage } from './scenes/ChooseItemPage'
 import  TrainSeatingPage  from './scenes/TrainSeatingPage'  
 import { ResultPage } from './scenes/ResultPage'
+import { OtomePage } from './scenes/OtomePage'
 
 function App() {
   const [scene, setScene] = useState("intro");
@@ -21,7 +23,7 @@ function App() {
       )}
 
       {scene === "presentation" && (
-        <PresentationPage onNext={() => setScene("choose-item")} />
+        <PresentationSlide onNext={() => setScene("choose-item")} />
       )}
 
       {scene === "choose-item" && (
@@ -29,7 +31,11 @@ function App() {
       )}
 
       {scene === "train-seating" && (
-        <TrainSeatingPage onNext={() => setScene("result")} />
+        <TrainSeatingPage onNext={() => setScene("otome")} />
+      )}
+
+      {scene === "otome" && (
+        <OtomePage onNext={() => setScene("result")} />
       )}
     </>
   );
