@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 import { StartPage } from './scenes/StartPage'
@@ -8,8 +8,20 @@ import  TrainSeatingPage  from './scenes/TrainSeatingPage'
 import { ResultPage } from './scenes/ResultPage'
 import { OtomePage } from './scenes/OtomePage'
 
+
+function InterludeScreen({ onDone }: { onDone: () => void }) {
+  // Auto-advance after animation completes (match duration to CSS)
+  useEffect(() => {
+    const timer = setTimeout(onDone, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return <div className='interlude-screen'>Interlude...</div>;
+}
+
 function App() {
-  const [scene, setScene] = useState("intro");
+  // CHANGE BACK TO INTRO BEFORE SUBMISSION
+  const [scene, setScene] = useState("train-seating");
 
   return (
     <>
@@ -30,7 +42,12 @@ function App() {
       )}
 
       {scene === "train-seating" && (
-        <TrainSeatingPage onNext={() => setScene("otome")} />
+        <TrainSeatingPage onNext={() => setScene("interlude")} />
+      )}
+
+      {/* Interlude screen between train-seating and otome */}
+      {scene === "interlude" && (
+        <InterludeScreen onDone={() => setScene("otome")} />
       )}
 
       {scene === "otome" && (
