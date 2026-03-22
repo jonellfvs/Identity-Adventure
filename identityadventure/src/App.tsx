@@ -72,7 +72,11 @@ function App() {
       )}
 
       {scene === "enemy-encounter" && (
-        <EnemyEncounter onNext={() => setScene("Interlude3")} />
+        <EnemyEncounter onNext={() => setScene("tower-bloxx")} />
+      )}
+
+      {scene === "tower-bloxx" && (
+        <TowerBloxx onNext={() => setScene("result")} />
       )}
 
       {scene === "Interlude3" && (
