@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&display=swap');
+
+/* ─────────────────────────────────────────────
+   PAGE — full viewport, no scroll
+───────────────────────────────────────────── */
+.rp-page {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f5e6c8;
+  background-image:
+    repeating-linear-gradient(0deg,   transparent, transparent 28px, rgba(180,160,100,0.18) 28px, rgba(180,160,100,0.18) 30px),
+    repeating-linear-gradient(90deg,  transparent, transparent 28px, rgba(180,160,100,0.18) 28px, rgba(180,160,100,0.18) 30px);
+  font-family: 'Patrick Hand', cursive;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ─────────────────────────────────────────────
+   BACKGROUND DOODLES
+───────────────────────────────────────────── */
+.rp-doodle {
+  position: fixed;
+  font-family: 'Permanent Marker', cursive;
+  color: #2a1a0e;
+  pointer-events: none;
+  opacity: 0.07;
+  z-index: 0;
+}
+.rp-doodle--1 { font-size: 64px; top: 5%;    left: 1%;   transform: rotate(-15deg); }
+.rp-doodle--2 { font-size: 40px; top: 28%;   right: 2%;  transform: rotate(10deg);  }
+.rp-doodle--3 { font-size: 72px; bottom: 30%; left: 0%;  transform: rotate(-5deg);  }
+.rp-doodle--4 { font-size: 36px; bottom: 12%; right: 4%; transform: rotate(20deg);  }
+.rp-doodle--5 { font-size: 48px; bottom: 2%;  left: 10%; transform: rotate(-8deg);  }
+
+/* ─────────────────────────────────────────────
+   TWO-COLUMN LAYOUT
+───────────────────────────────────────────── */
+.rp-layout {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 50% 1fr;
+  gap: 0;
+  padding: 20px 24px 20px 20px;
+  box-sizing: border-box;
+}
+
+/* ─────────────────────────────────────────────
+   LEFT COLUMN
+───────────────────────────────────────────── */
+.rp-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 10px 0 0;
+  height: 95%;
+  margin-top: auto;
+}
+
+/* Wake text */
+.rp-wake {
+  font-family: cursive;
+  font-size: clamp(18px, 2.5vw, 30px);
+  color: #2a1a0e;
+  text-align: center;
+  line-height: 1.4;
+  animation: rp-fade-up 0.5s ease both;
+}
+
+/* Sprite */
+.rp-sprite-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  width: 100%;
+}
+
+.rp-sprite {
+  max-width: 40%;
+  max-height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  animation: rp-sprite-bounce 2.4s ease-in-out infinite;
+  border-radius: 35px;
+}
+
+.rp-sprite-fallback {
+  display: none;
+  font-size: 100px;
+  align-items: center;
+  justify-content: center;
+  animation: rp-sprite-bounce 2.4s ease-in-out infinite;
+}
+
+@keyframes rp-sprite-bounce {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-10px); }
+}
+
+/* Type identity */
+.rp-identity {
+  text-align: center;
+  animation: rp-fade-up 0.5s 0.15s ease both;
+}
+
+.rp-type-code {
+  font-family: cursive;
+  font-size: clamp(40px, 5vw, 70px);
+  line-height: 1;
+  letter-spacing: 4px;
+}
+
+.rp-type-title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: clamp(16px, 1.8vw, 22px);
+  color: #2a1a0e;
+  margin-top: 8px;
+}
+
+.rp-type-emoji {
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+.rp-type-tagline {
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(12px, 1.2vw, 20px);
+  color: #6b4c2a;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* Restart button */
+.rp-btn-restart {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 18px;
+  background: #2a1a0e;
+  color: #ffd966;
+  border: none;
+  padding: 12px 36px;
+  border-radius: 12px 16px 14px 10px / 10px 14px 16px 12px;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 #e05a00;
+  transition: transform 0.1s, box-shadow 0.1s;
+  animation: rp-fade-up 0.5s 0.4s ease both;
+  white-space: nowrap;
+  margin-top: 15px;
+  width: fit-content;
+  height: fit-content;
+  place-self: center;
+}
+.rp-btn-restart:hover  { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #e05a00; }
+.rp-btn-restart:active { transform: translate(3px,  3px);  box-shadow: 2px 2px 0 #e05a00; }
+
+/* ─────────────────────────────────────────────
+   RIGHT COLUMN
+───────────────────────────────────────────── */
+.rp-right {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  height: 100%;
+  min-height: 0;
+  /* width: fit-content; */
+}
+
+/* ─────────────────────────────────────────────
+   CARDS (right column)
+───────────────────────────────────────────── */
+.rp-card {
+  background: #fffef7;
+  border: 3px solid #2a1a0e;
+  border-radius: 14px 18px 16px 12px / 12px 16px 18px 14px;
+  box-shadow: 4px 4px 0 #2a1a0e;
+  padding: 30px 23px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  animation: rp-fade-up 0.5s ease both;
+  min-height: 0;
+  /* width: fit-content; */
+}
+
+
+.rp-card--description { transform: rotate(-0.3deg); animation-delay: 0.1s; }
+.rp-card--quote       { transform: rotate(0.3deg);  animation-delay: 0.2s; background: #fff9e6; }
+.rp-card--bars        { transform: rotate(-0.2deg); animation-delay: 0.3s; }
+.rp-card--links       { transform: rotate(0.2deg);  animation-delay: 0.4s; }
+
+.rp-card-title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: clamp(10px, 1vw, 20px);
+  color: #e05a00;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  flex-shrink: 0;
+}
+
+.rp-card-text {
+  font-size: clamp(12px, 1.1vw, 20px);
+  color: #2a1a0e;
+  line-height: 1.55;
+}
+
+.rp-card-col-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  /* width: stretch; */
+}
+
+/* Quote */
+.rp-quote-text {
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(12px, 1.1vw, 20px);
+  color: #2a1a0e;
+  line-height: 1.55;
+  border-left: 4px solid #e05a00;
+  padding-left: 12px;
+  margin: 0;
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────────
+   SCORE BARS
+───────────────────────────────────────────── */
+.rp-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  /* padding: 50px 0; */
+}
+
+.rp-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rp-bar-label {
+  font-family: 'Permanent Marker', cursive;
+  font-size: clamp(11px, 1vw, 20px);
+  color: #b8a070;
+  min-width: 46px;
+  line-height: 1.2;
+}
+.rp-bar-label em {
+  display: block;
+  font-style: normal;
+  font-size: 10px;
+  font-family: 'Patrick Hand', cursive;
+  opacity: 0.7;
+}
+.rp-bar-label--left      { text-align: right; }
+.rp-bar-label--right     { text-align: left; }
+.rp-bar-label--dominant  { color: #2a1a0e; }
+
+.rp-bar-track {
+  flex: 1;
+  height: 23px;
+  background: #e8dfc8;
+  border: 2px solid #2a1a0e;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.rp-bar-fill {
+  height: 100%;
+  transition: width 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.rp-bar-fill--left  { margin-left: auto; border-radius: 0; }
+.rp-bar-fill--right { border-radius: 0; }
+
+.rp-bar-center {
+  width: 3px;
+  height: 100%;
+  background: #2a1a0e;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────────────
+   LINKS
+───────────────────────────────────────────── */
+.rp-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rp-link {
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(12px, 1.1vw, 20px);
+  color: #2a1a0e;
+  background: #f5e6c8;
+  border: 2.5px solid #2a1a0e;
+  border-radius: 8px;
+  padding: 6px 12px;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 #2a1a0e;
+  transition: transform 0.1s, box-shadow 0.1s, color 0.1s;
+  white-space: nowrap;
+}
+.rp-link:hover  { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 #2a1a0e; color: #e05a00; }
+.rp-link:active { transform: translate(2px,  2px);  box-shadow: 1px 1px 0 #2a1a0e; }
+
+/* ─────────────────────────────────────────────
+   KEYFRAMES
+───────────────────────────────────────────── */
+@keyframes rp-fade-up {
+  0%   { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

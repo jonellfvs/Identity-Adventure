@@ -10,7 +10,8 @@ import { OtomePage } from './scenes/OtomePage'
 import SchedPlannerPage from './scenes/SchedPlannerPage'
 import BusSeating from './scenes/BusSeatingPage'
 import EnemyEncounter from './scenes/EnemyEncounterPage'
-import TowerBloxx from './scenes/TowerBloxxPage'
+import FindChargerPage from './scenes/FindChargerPage'
+import NotificationPage from './scenes/NotificationPage'
 
 
 function InterludeScreen({ onDone, text }: { onDone: () => void; text: string }) {
@@ -25,7 +26,7 @@ function InterludeScreen({ onDone, text }: { onDone: () => void; text: string })
 
 function App() {
   // CHANGE BACK TO INTRO BEFORE SUBMISSION
-  const [scene, setScene] = useState("bus-seating");
+  const [scene, setScene] = useState("find-charger");
 
   return (
     <>
@@ -79,12 +80,20 @@ function App() {
       )}
 
       {scene === "Interlude3" && (
-        <InterludeScreen onDone={() => setScene("result")} text={"Enemy encountered! \nYou're now helpless, lost, and... your phone just died."} />
+        <InterludeScreen onDone={() => setScene("find-charger")} text={"Enemy encountered! \nYou're now helpless, lost, and... your phone just died."} />
       )}
-      {/* Find charger */}
-      {/* you got a notification */}
-      {/* pic of rejected email */}
-      {/* you woke up from dream */}
+      
+      {scene === "find-charger" && (
+        <FindChargerPage onNext={() => setScene("Interlude4")} />
+      )}
+
+      {scene === "Interlude4" && (
+        <InterludeScreen onDone={() => setScene("notification")} text={"You found a charger and got your phone back to life! \nThere's one notification waiting..."} />
+      )}
+
+      {scene === "notification" && (
+        <NotificationPage onNext={() => setScene("result")} />
+      )}
     </>
   );
 }

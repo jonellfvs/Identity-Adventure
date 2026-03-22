@@ -126,7 +126,7 @@ export default function ChooseItem({ onNext }: ChooseItemProps) {
         <div className="ci-prompt-bubble">
           <p className="ci-prompt-label">🎒 Pack Your Bag</p>
           <p className="ci-prompt-text">
-            You're heading out. What do you bring?
+            You're heading out for your first interview with Google. What do you bring?
           </p>
           <p className="ci-prompt-sub">
             Click an item in the room — or head out with nothing but confidence!
