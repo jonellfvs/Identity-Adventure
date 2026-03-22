@@ -35,17 +35,17 @@ const CHOICE_B: Choice = {
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface EnemyEncounterProps {
-  onNext?: () => void;
+  onNext?: (choice: "hide" | "fight") => void;
 }
 
 export default function EnemyEncounter({ onNext }: EnemyEncounterProps) {
   const { addScore } = useMBTI();
 
-  function handleChoice(choice: Choice) {
+  function handleChoice(choice: Choice, key: "hide" | "fight") {
     addScore(choice.scores);
 
     if (onNext) {
-        onNext();
+        onNext(key);
     }
   }
 
@@ -67,7 +67,7 @@ export default function EnemyEncounter({ onNext }: EnemyEncounterProps) {
       <button
         className="ee-choice-btn ee-choice-left"
         data-label="Hide"
-        onClick={() => handleChoice(CHOICE_A)}
+        onClick={() => handleChoice(CHOICE_A, "hide")}
         >
         <img src={hide} alt="Hide" className="ee-choice-hide" />
       </button>
@@ -75,7 +75,7 @@ export default function EnemyEncounter({ onNext }: EnemyEncounterProps) {
       <button
         className="ee-choice-btn ee-choice-right"
         data-label="Fight"
-        onClick={() => handleChoice(CHOICE_B)}
+        onClick={() => handleChoice(CHOICE_B, "fight")}
         >
         <img src={fight} alt="Fight" className="ee-choice-fight" />
       </button>

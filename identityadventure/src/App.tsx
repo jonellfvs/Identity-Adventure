@@ -18,7 +18,7 @@ import TowerBloxx from './scenes/TowerBloxxPage'
 function InterludeScreen({ onDone, text }: { onDone: () => void; text: string }) {
   // Auto-advance after animation completes (match duration to CSS)
   useEffect(() => {
-    const timer = setTimeout(onDone, 3000);
+    const timer = setTimeout(onDone, 4000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -28,6 +28,9 @@ function InterludeScreen({ onDone, text }: { onDone: () => void; text: string })
 function App() {
   // CHANGE BACK TO INTRO BEFORE SUBMISSION
   const [scene, setScene] = useState("intro");
+
+  // Keeps track if the user chooses to hide or fight when enemy was encountered
+  const [enemyChoice, setEnemyChoice] = useState<"hide" | "fight" | null>(null);
 
   return (
     <div style={{ width: "100vw", minHeight: "100vh", overflow: "hidden" }}>
@@ -69,15 +72,23 @@ function App() {
       )}
 
       {scene === "enemy-encounter" && (
-        <EnemyEncounter onNext={() => setScene("tower-bloxx")} />
+        <EnemyEncounter onNext={(choice) => {
+          setEnemyChoice(choice);
+          setScene("tower-bloxx");
+        }} />
       )}
 
       {scene === "tower-bloxx" && (
-        <TowerBloxx onNext={() => setScene("result")} />
+        <TowerBloxx onNext={() => setScene("Interlude3")} />
       )}
 
       {scene === "Interlude3" && (
-        <InterludeScreen onDone={() => setScene("find-charger")} text={"Enemy encountered! \nYou're now helpless, lost, and... your phone just died."} />
+        <InterludeScreen
+          onDone={() => setScene("find-charger")}
+          text={enemyChoice === "hide"
+            ? "You tried to hide... but the enemy found you! They took the money. You're now helpless, lost, and.. your phone is dead."
+            : "You fought back... but the enemy defeated you! They took the money. You're now helpless, lost, and.. your phone is dead."}
+        />
       )}
       
       {scene === "find-charger" && (
