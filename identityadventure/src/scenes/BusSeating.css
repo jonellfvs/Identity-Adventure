@@ -3,7 +3,7 @@
 /* ─────────────────────────────────────────────
    PAGE
 ───────────────────────────────────────────── */
-.ts-page {
+.bs-page {
   min-height: 100vh;
   background-color: #f5e6c8;
   background-image:
@@ -33,14 +33,14 @@
 /* ─────────────────────────────────────────────
    PROMPT BUBBLE
 ───────────────────────────────────────────── */
-.ts-prompt-wrapper {
+.bs-prompt-wrapper {
   width: 100%;
   max-width: 680px;
   margin-bottom: 18px;
   margin-top: 32px;
 }
 
-.ts-prompt-bubble {
+.bs-prompt-bubble {
   background: #fff9e6;
   border: 3.5px solid #2a1a0e;
   border-radius: 16px 22px 18px 20px / 20px 16px 22px 18px;
@@ -51,7 +51,7 @@
 }
 
 /* Speech bubble tail — outline */
-.ts-prompt-bubble::after {
+.bs-prompt-bubble::after {
   content: '';
   position: absolute;
   bottom: -20px;
@@ -65,7 +65,7 @@
 }
 
 /* Speech bubble tail — fill */
-.ts-prompt-bubble::before {
+.bs-prompt-bubble::before {
   content: '';
   position: absolute;
   bottom: -14px;
@@ -79,7 +79,7 @@
   z-index: 1;
 }
 
-.ts-prompt-label {
+.bs-prompt-label {
   font-family: 'Permanent Marker', cursive;
   font-size: 16px;
   color: #e05a00;
@@ -89,7 +89,7 @@
   text-align: center;
 }
 
-.ts-prompt-text {
+.bs-prompt-text {
   font-family: 'Permanent Marker', cursive;
   font-size: 32px;
   color: #2a1a0e;
@@ -97,7 +97,7 @@
   text-align: center;
 }
 
-.ts-prompt-sub {
+.bs-prompt-sub {
   font-size: 18px;
   color: #6b4c2a;
   text-align: center;
@@ -105,37 +105,38 @@
 }
 
 /* ─────────────────────────────────────────────
-   TRAIN SCENE
+   bus SCENE
 ───────────────────────────────────────────── */
-.ts-train-scene {
+.bs-bus-scene {
   width: 100%;
-  max-width: 720px;
-  margin-top: 120px;
+  max-width: 680px;
+  margin-top: 160px;
   position: relative;
   display: flex;
   justify-content: center;
   transform: scale(1.25)
 }
 
-.ts-train-bg {
+.bs-bus-bg {
   width: 100%;
   max-width: 680px;
   display: block;
 }
 
-.ts-train-placeholder {
+.bs-bus-placeholder {
   width: 100%;
-  max-width: 680px;
-  height: 420px;
+  max-width: 780px;
+  height: 472px;
   background: #d4e8f7;
   border: 4px solid #2a1a0e;
   border-radius: 28px 28px 14px 14px / 18px 18px 10px 10px;
   position: relative;
   box-shadow: 6px 6px 0 #2a1a0e;
   overflow: hidden;
+  margin-top: -44px;
 }
 
-.ts-train-placeholder::before {
+.bs-bus-placeholder::before {
   content: '';
   position: absolute;
   top: 0;
@@ -146,7 +147,7 @@
   border-bottom: 3px solid #2a1a0e;
 }
 
-.ts-train-label {
+.bs-bus-label {
   position: absolute;
   top: 10px;
   left: 50%;
@@ -159,7 +160,7 @@
   z-index: 1;
 }
 
-.ts-window-row {
+.bs-window-row {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -167,7 +168,7 @@
   margin-top: 48px;
 }
 
-.ts-win {
+.bs-win {
   width: 80px;
   height: 54px;
   background: linear-gradient(135deg, #a8d4f0 40%, #cce8fa);
@@ -176,48 +177,45 @@
   box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.5);
 }
 
-.ts-floor {
+.bs-window-row--bottom {
   position: absolute;
-  bottom: 0;
+  bottom: 18px;
   left: 0;
   right: 0;
-  height: 52px;
-  background: #b8860b;
-  border-top: 3px solid #2a1a0e;
-  opacity: 0.35;
+  padding: 0 18px;
 }
 
 /* ─────────────────────────────────────────────
    SEATS OVERLAY
-   Adjust top/left/width once you add train_seating.png
+   Adjust top/left/width once you add bus_seating.png
 ───────────────────────────────────────────── */
-.ts-seats-overlay {
+.bs-seats-overlay {
   position: absolute;
-  top: 92px;
-  left: 50%;
+  top: 26px;
+  left: 45%;
   transform: translateX(-50%);
   width: 90%;
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 4px;
 }
 
-.ts-seat-row {
+.bs-seat-row {
   display: flex;
-  gap: 8px;
+  gap: 80px;
   justify-content: center;
   align-items: center;
 }
 
-.ts-seat-spacer {
-  height: 80px; /* space between the two sides of the train */
+.bs-seat-spacer {
+  height: 60px; /* space between the two sides of the bus */
 }
 
 /* ─────────────────────────────────────────────
    INDIVIDUAL SEAT
 ───────────────────────────────────────────── */
-.seat {
+.busSeat {
   width: 72px;
   height: 72px;
   position: relative;
@@ -226,7 +224,7 @@
 }
 
 /* Real seat image (swap in when ready) */
-.seat-img {
+.busSeat-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -234,17 +232,18 @@
 }
 
 /* ── CSS fallback seat shape (remove when using seat images) ── */
-.seat-shape {
+.busSeat-shape {
   display: block;
   width: 100%;
   height: 100%;
   border-radius: 10px 10px 6px 6px;
   border: 3px solid #2a1a0e;
   position: relative;
+  transform: rotate(-90deg);
   transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
 }
 
-.seat-shape::after {
+.busSeat-shape::after {
   content: '';
   position: absolute;
   top: -14px;
@@ -253,19 +252,19 @@
   height: 14px;
   border-radius: 5px 5px 0 0;
   border: 3px solid #2a1a0e;
-  border-bottom: none;
+  border-bottom: none;  
 }
 
 /* ── OCCUPIED ── */
-.seat--occupied {
+.busSeat--occupied {
   cursor: not-allowed;
 }
 
-.seat--occupied .seat-shape {
+.busSeat--occupied .busSeat-shape {
   background: #e8c49a;
 }
 
-.seat--occupied .seat-shape::before {
+.busSeat--occupied .busSeat-shape::before {
   content: '👤';
   position: absolute;
   top: 50%;
@@ -276,34 +275,36 @@
 }
 
 /* ── EMPTY ── */
-.seat--empty {
+.busSeat--empty {
   cursor: pointer;
 }
 
-.seat--empty .seat-shape {
+.busSeat--empty .busSeat-shape {
   background: #f0ead0;
 }
 
-.seat--empty:hover .seat-shape {
+.busSeat--empty:hover .busSeat-shape {
   transform: translateY(-4px) rotate(-2deg);
   background: #ffd966;
   box-shadow: 3px 3px 0 #2a1a0e;
+  transform: rotate(-90deg);
 }
 
 /* ── SELECTED ── */
-.seat--selected .seat-shape {
+.busSeat--selected .busSeat-shape {
   background: #ff6b6b;
   border-color: #c0392b;
   box-shadow: 4px 4px 0 #c0392b;
-  animation: seat-wiggle 0.35s ease;
+  animation: busSeat-wiggle 0.35s ease;
+  transform: rotate(-90deg);
 }
 
-.seat--selected .seat-shape::after {
+.busSeat--selected .busSeat-shape::after {
   border-color: #c0392b;
   background: #ff6b6b;
 }
 
-.seat--selected .seat-shape::before {
+.busSeat--selected .busSeat-shape::before {
   content: '★';
   position: absolute;
   top: 50%;
@@ -313,18 +314,18 @@
   color: #fff;
 }
 
-@keyframes seat-wiggle {
-  0%   { transform: rotate(0deg); }
-  25%  { transform: rotate(-6deg); }
-  50%  { transform: rotate(6deg); }
-  75%  { transform: rotate(-3deg); }
-  100% { transform: rotate(0deg); }
+@keyframes busSeat-wiggle {
+  0%   { transform: rotate(-90deg); }
+  25%  { transform: rotate(-84deg); }
+  50%  { transform: rotate(-96deg); }
+  75%  { transform: rotate(-87deg); }
+  100% { transform: rotate(-90deg); }
 }
 
 /* ─────────────────────────────────────────────
    HINT
 ───────────────────────────────────────────── */
-.ts-hint {
+.bs-hint {
   font-size: 13px;
   color: #6b4c2a;
   text-align: center;
@@ -333,7 +334,7 @@
 }
 
 /* BOTTOM CONTROLS */
-.ts-btn-area {
+.bs-btn-area {
   display: flex;
   position: fixed;
   right: 60px;  
@@ -342,7 +343,7 @@
   z-index: 50;
 }
 
-.ts-selection-info {
+.bs-selection-info {
   font-size: 15px;
   color: #2a1a0e;
   background: #fff9e6;
@@ -354,7 +355,7 @@
   animation: pop-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.ts-btn-next {
+.bs-btn-next {
   font-family: 'Permanent Marker', cursive;
   font-size: 20px;
   background: #2a1a0e;
@@ -367,18 +368,18 @@
   transition: transform 0.1s, box-shadow 0.1s;
 }
 
-.ts-btn-next:disabled {
+.bs-btn-next:disabled {
   opacity: 0.4;
   cursor: not-allowed;
   box-shadow: 2px 2px 0 #999;
 }
 
-.ts-btn-next:not(:disabled):hover {
+.bs-btn-next:not(:disabled):hover {
   transform: translate(-2px, -2px);
   box-shadow: 7px 7px 0 #e05a00;
 }
 
-.ts-btn-next:not(:disabled):active {
+.bs-btn-next:not(:disabled):active {
   transform: translate(3px, 3px);
   box-shadow: 2px 2px 0 #e05a00;
 }
@@ -386,7 +387,7 @@
 /* ─────────────────────────────────────────────
    SCORE FLASH OVERLAY
 ───────────────────────────────────────────── */
-.ts-score-flash {
+.bs-score-flash {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -403,7 +404,7 @@
   box-shadow: 8px 8px 0 #e05a00;
 }
 
-.ts-score-flash--show {
+.bs-score-flash--show {
   animation: flash-pop 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
