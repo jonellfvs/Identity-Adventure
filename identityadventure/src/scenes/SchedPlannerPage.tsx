@@ -178,7 +178,7 @@ export default function SchedPlanner({ onNext }: SchedPlannerProps) {
         <div className="sp-prompt-bubble">
           <p className="sp-prompt-label">💰 Schedule Planner</p>
           <p className="sp-prompt-text">
-            You find $1,000,000 on your seat.<br />How do you spend it?
+            You find $1,000,000 on your seat.<br />How would you spend it?
           </p>
           <p className="sp-prompt-sub">
             Drag tasks into your planner!
