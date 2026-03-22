@@ -1,6 +1,6 @@
 .ot-page {
     min-height: 100vh;
-    background-image: url(C:\Users\kimbe\vscode_folders\spring2026\beachhacks9.0\Identity-Adventure\identityadventure\src\assets\images\otome_train_background.png);
+    background-image: url(identityadventure\src\assets\images\otome_train_background.png);
     background-size: cover;
     background-position: center;
 }
@@ -14,4 +14,69 @@
 .elbee-img {
     width: 750px;  /* adjust to taste */
     height: auto;  /* keeps aspect ratio */
+}
+
+.dialogue-box {
+    width: 70%;
+    position: absolute;
+    bottom: 30px; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: cursive;
+}
+
+.speaker {
+    display: inline-block;
+    background: #ffffffeb;
+    /* border: 2.5px solid rgba(255, 255, 255, 0.7); */
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    padding: 5px 22px 7px;
+    margin-left: 16px;
+    font-size: 25px;
+    font-weight: 800;
+    font-style: italic;
+    color: #ffffff;
+    margin-bottom: 0;
+    text-shadow:
+        -1.5px -1.5px 0 #9c447feb,
+         1.5px -1.5px 0 #9c447feb,
+        -1.5px  1.5px 0 #9c447feb,
+         1.5px  1.5px 0 #9c447feb;
+}
+
+.text {
+    background: 
+        radial-gradient(circle, #81004117 8px, transparent 2px),
+        rgba(255, 182, 210, 0.82);
+    background-size: 35px 35px;
+    border: 2.5px solid rgba(255, 255, 255, 0.788);
+    border-radius:  12px 12px 12px;
+    padding: 30px 30px;
+    min-height: 155px;
+    font-size: 25px;
+    color: #ffffff;
+    line-height: 1.7;
+    margin-top: 0;
+    text-shadow:
+        -1.5px -1.5px 0 #000000,
+         1.5px -1.5px 0 #000000,
+        -1.5px  1.5px 0 #000000,
+         1.5px  1.5px 0 #000000;
+}
+
+.choice-button {
+    background: rgba(255, 210, 228, 0.88);
+    border: 2px solid rgba(255, 255, 255, 0.65);
+    border-radius: 8px;
+    padding: 10px 40px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #7a2b55;
+    cursor: pointer;
+    min-width: 200px;
+}
+
+.choice-button:hover {
+    background: rgba(255, 230, 240, 0.95);
 }

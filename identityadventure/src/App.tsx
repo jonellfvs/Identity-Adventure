@@ -2,11 +2,9 @@ import { useState } from 'react'
 import './App.css'
 
 import { StartPage } from './scenes/StartPage'
-import { PresentationPage } from './scenes/PresentationPage'
 import  PresentationSlide  from './scenes/PresentationSlide'
-import ChooseItemPage from './scenes/ChooseItemPage'
-import TrainSeatingPage from './scenes/TrainSeatingPage'  
-import BusSeatingPage from './scenes/BusSeatingPage'
+import  ChooseItemPage from './scenes/ChooseItemPage'
+import  TrainSeatingPage  from './scenes/TrainSeatingPage'  
 import { ResultPage } from './scenes/ResultPage'
 import { OtomePage } from './scenes/OtomePage'
 
@@ -32,11 +30,11 @@ function App() {
       )}
 
       {scene === "train-seating" && (
-        <TrainSeatingPage onNext={() => setScene("bus-seating")} />
+        <TrainSeatingPage onNext={() => setScene("otome")} />
       )}
 
-      {scene === "bus-seating" && (
-        <BusSeatingPage onNext={() => setScene("result")} />
+      {scene === "otome" && (
+        <OtomePage onNext={() => setScene("result")} />
       )}
     </>
   );
