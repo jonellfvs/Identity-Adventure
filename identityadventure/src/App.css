@@ -1,3 +1,15 @@
+/* #root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+} */
+
 .interlude-screen {
     position: fixed;
     inset: 0;
@@ -9,8 +21,10 @@
     font-size: 32px;
     font-family: cursive;
     font-style: italic;
-    animation: interludeFade 3s ease forwards;
+    animation: interludeFade 6s ease forwards;
     z-index: 999;
+    white-space: pre-wrap; /* allow line breaks in interlude text */
+    text-align: center;
 }
 
 @keyframes interludeFade {
