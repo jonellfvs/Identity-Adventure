@@ -124,8 +124,7 @@ export default function PresentationSlide({ onNext }: PresentationSlideProps) {
 
   const [slots, setSlots]               = useState<(DragItem | null)[]>([null, null]);
   const [dragOverSlot, setDragOverSlot] = useState<number | null>(null);
-  const [flashText, setFlashText]       = useState("");
-  const [showFlash, setShowFlash]       = useState(false);
+
   const draggingId = useRef<string | null>(null);
 
   const usedIds = slots.filter(Boolean).map((s) => s!.id);

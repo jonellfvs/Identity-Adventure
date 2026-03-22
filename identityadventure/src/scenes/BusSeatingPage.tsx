@@ -9,35 +9,34 @@ interface SeatDef {
   status: SeatStatus;
   scoreType?: "E" | "I" | "S" | "N" | "T" | "F" | "J" | "P";
   scoreVal?: number;
-  tooltip?: string;
 }
 
 const ROW_1: SeatDef[] = [
-  { col: 0, status: "empty",    scoreType: "I", scoreVal: 2, tooltip: "Sit by yourself (+1I)" },
-  { col: 1, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
-  { col: 2, status: "occupied",},
-  { col: 3, status: "occupied" },
+  { col: 0, status: "empty",    scoreType: "E", scoreVal: 1 },
+  { col: 1, status: "occupied" },
+  { col: 2, status: "occupied" },
+  { col: 3, status: "empty",    scoreType: "I", scoreVal: 1 },
 ];
 
 const ROW_2: SeatDef[] = [
-  { col: 0, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
-  { col: 1, status: "occupied" },
-  { col: 2, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
-  { col: 3, status: "empty",    scoreType: "I", scoreVal: 1, tooltip: "Sit by yourself (+1I)" },
+  { col: 0, status: "occupied" },
+  { col: 1, status: "empty",    scoreType: "E", scoreVal: 1 },
+  { col: 2, status: "occupied" },
+  { col: 3, status: "empty",    scoreType: "E", scoreVal: 1 },
 ];
 
 const ROW_3: SeatDef[] = [
-  { col: 0, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
-  { col: 1, status: "occupied" },
-  { col: 2, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
-  { col: 3, status: "empty",    scoreType: "I", scoreVal: 1, tooltip: "Sit by yourself (+1I)" },
+  { col: 0, status: "empty",    scoreType: "E", scoreVal: 1 },
+  { col: 1, status: "empty",    scoreType: "I", scoreVal: 1 },
+  { col: 2, status: "empty",    scoreType: "E", scoreVal: 2 },
+  { col: 3, status: "occupied" },
 ];
 
 const ROW_4: SeatDef[] = [
-  { col: 0, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
+  { col: 0, status: "occupied" },
   { col: 1, status: "occupied" },
-  { col: 2, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
-  { col: 3, status: "empty",    scoreType: "I", scoreVal: 1, tooltip: "Sit by yourself (+1I)" },
+  { col: 2, status: "occupied" },
+  { col: 3, status: "empty",    scoreType: "I", scoreVal: 2 },
 ];
 
 
@@ -54,7 +53,6 @@ function Seat({ seat, isSelected, onSelect }: SeatProps) {
   return (
     <div
       className={`busSeat busSeat--${status}`}
-      title={seat.tooltip}
       onClick={() => seat.status === "empty" && onSelect(seat)}
     >
       <span className="busSeat-shape" />
@@ -72,8 +70,6 @@ export default function BusSeating({ onNext }: BusSeatingProps) {
   const { addScore } = useMBTI();
 
   const [selectedSeat, setSelectedSeat] = useState<SeatDef | null>(null);
-  const [flashText, setFlashText]       = useState<string>("");
-  const [showFlash, setShowFlash]       = useState(false);
 
   function handleSelectSeat(seat: SeatDef) {
     setSelectedSeat(seat);
@@ -87,29 +83,10 @@ export default function BusSeating({ onNext }: BusSeatingProps) {
 
     // Add to shared MBTI context
     addScore({ [type]: val });
-
-    // Flash animation
-    setFlashText(`+${val}${type}!`);
-    setShowFlash(false);
-    setTimeout(() => setShowFlash(true), 10);
-
-    // Navigate after animation
-    setTimeout(() => {
-      if (onNext) {
+    if (onNext) {
         onNext();
-      } else {
-        // ── CHANGE THIS to your router navigation ──
-        // e.g. navigate("/next-scene") or router.push("/next-scene")
-        alert(`Score saved! +${val}${type}\n\n(Pass an onNext prop or replace this with your router navigation)`);
-      }
-    }, 1400);
+    }
   }
-
-  const selectionLabel = selectedSeat
-    ? `Row ${selectedSeat.col < 3 ? 1 : 2} · Seat ${selectedSeat.col + 1} — ${
-        selectedSeat.scoreType === "I" ? "🪟 Alone" : "👥 Near others"
-      } · +${selectedSeat.scoreVal}${selectedSeat.scoreType}`
-    : "";
 
   return (
     <div className="bs-page">
@@ -163,13 +140,9 @@ export default function BusSeating({ onNext }: BusSeatingProps) {
             {ROW_2.map((seat) => (
               <Seat
                 key={`r2-c${seat.col}`}
-                seat={seat}
-                isSelected={
-                selectedSeat?.col === seat.col &&
-                selectedSeat?.scoreType === seat.scoreType &&
-                ROW_2.includes(seat)   // ← was ROW_1
-                }
-                onSelect={handleSelectSeat}
+                seat={{ ...seat, col: seat.col + 20 }}
+                isSelected={selectedSeat?.col === seat.col + 20}
+                onSelect={(s) => handleSelectSeat({ ...seat, col: seat.col + 20 })}
             />
             ))}
           </div>
@@ -177,13 +150,9 @@ export default function BusSeating({ onNext }: BusSeatingProps) {
             {ROW_3.map((seat) => (
               <Seat
                 key={`r3-c${seat.col}`}
-                seat={seat}
-                isSelected={
-                selectedSeat?.col === seat.col &&
-                selectedSeat?.scoreType === seat.scoreType &&
-                ROW_3.includes(seat)   // ← was ROW_1
-                }
-                onSelect={handleSelectSeat}
+                seat={{ ...seat, col: seat.col + 30 }}
+                isSelected={selectedSeat?.col === seat.col + 30}
+                onSelect={(s) => handleSelectSeat({ ...seat, col: seat.col + 30 })}
             />
             ))}
           </div>
@@ -192,13 +161,13 @@ export default function BusSeating({ onNext }: BusSeatingProps) {
             {ROW_4.map((seat) => (
               <Seat
                 key={`r4-c${seat.col}`}
-                seat={{ ...seat, col: seat.col + 10 }} // offset col id so row 2 seats are unique
+                seat={{ ...seat, col: seat.col + 40 }} // offset col id so row 2 seats are unique
                 isSelected={
                   selectedSeat !== null &&
-                  selectedSeat.col === seat.col + 10
+                  selectedSeat.col === seat.col + 40
                 }
                 onSelect={(s) =>
-                  handleSelectSeat({ ...seat, col: seat.col + 10 })
+                  handleSelectSeat({ ...seat, col: seat.col + 40 })
                 }
               />
             ))}
@@ -218,7 +187,7 @@ export default function BusSeating({ onNext }: BusSeatingProps) {
           disabled={!selectedSeat}
           onClick={handleNext}
         >
-          Next Stop →
+          Continue →
         </button>
       </div>
     </div>

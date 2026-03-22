@@ -7,6 +7,8 @@ import  ChooseItemPage from './scenes/ChooseItemPage'
 import  TrainSeatingPage  from './scenes/TrainSeatingPage'  
 import { ResultPage } from './scenes/ResultPage'
 import { OtomePage } from './scenes/OtomePage'
+import SchedPlannerPage from './scenes/SchedPlannerPage'
+import EnemyEncounter from './scenes/EnemyEncounter'
 
 
 function InterludeScreen({ onDone }: { onDone: () => void }) {
@@ -26,7 +28,7 @@ function App() {
   return (
     <>
       {scene === "intro" && (
-        <StartPage onNext={() => setScene("presentation")} />
+        <StartPage onNext={() => setScene("enemy-encounter")} />
       )}
 
       {scene === "result" && (

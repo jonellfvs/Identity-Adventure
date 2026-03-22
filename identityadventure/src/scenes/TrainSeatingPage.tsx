@@ -63,8 +63,6 @@ export default function TrainSeating({ onNext }: TrainSeatingProps) {
   const { addScore } = useMBTI();
 
   const [selectedSeat, setSelectedSeat] = useState<SeatDef | null>(null);
-  const [flashText, setFlashText]       = useState<string>("");
-  const [showFlash, setShowFlash]       = useState(false);
 
   function handleSelectSeat(seat: SeatDef) {
     setSelectedSeat(seat);
@@ -79,28 +77,10 @@ export default function TrainSeating({ onNext }: TrainSeatingProps) {
     // Add to shared MBTI context
     addScore({ [type]: val });
 
-    // Flash animation
-    setFlashText(`+${val}${type}!`);
-    setShowFlash(false);
-    setTimeout(() => setShowFlash(true), 10);
-
-    // Navigate after animation
-    setTimeout(() => {
-      if (onNext) {
+    if (onNext) {
         onNext();
-      } else {
-        // ── CHANGE THIS to your router navigation ──
-        // e.g. navigate("/next-scene") or router.push("/next-scene")
-        alert(`Score saved! +${val}${type}\n\n(Pass an onNext prop or replace this with your router navigation)`);
-      }
-    }, 1400);
+    }
   }
-
-  const selectionLabel = selectedSeat
-    ? `Row ${selectedSeat.col < 3 ? 1 : 2} · Seat ${selectedSeat.col + 1} — ${
-        selectedSeat.scoreType === "I" ? "🪟 Alone" : "👥 Near others"
-      } · +${selectedSeat.scoreVal}${selectedSeat.scoreType}`
-    : "";
 
   return (
     <div className="ts-page">
