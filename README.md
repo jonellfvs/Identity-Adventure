@@ -12,7 +12,7 @@ No boring questionnaires. Just games and fun!
 
 ---
 
-## 🎮 How to Play
+## How to Play
 
 Work through a series of story scenes. Each choice you make adds points to one or more MBTI dimensions:
 
@@ -27,7 +27,7 @@ At the end, your scores are tallied and you get one of **16 MBTI personality typ
 
 
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 - **React** + **TypeScript** (Vite)
 - **CSS** — hand-styled per component, no UI library
@@ -36,7 +36,7 @@ At the end, your scores are tallied and you get one of **16 MBTI personality typ
 
 ---
 
-## 🚀 Running Locally
+## Running Locally
 
 ```bash
 cd identityadventure
@@ -46,6 +46,6 @@ npm run dev
 
 ---
 
-## 👥 Team
+## Team
 
 Built at **BeachHacks 9.0** in 24 hours.
