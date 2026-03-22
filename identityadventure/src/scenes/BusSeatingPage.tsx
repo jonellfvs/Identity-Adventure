@@ -1,7 +1,6 @@
 import { useState } from "react";
-import "./TrainSeating.css";
+import "./BusSeating.css";
 import { useMBTI } from "../context/ScoreContext";
-
 
 type SeatStatus = "occupied" | "empty" | "selected";
 
@@ -18,8 +17,6 @@ const ROW_1: SeatDef[] = [
   { col: 1, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
   { col: 2, status: "occupied",},
   { col: 3, status: "occupied" },
-  { col: 4, status: "empty",    scoreType: "E", scoreVal: 2, tooltip: "Sit between two people (+2E)" },
-  { col: 5, status: "occupied" },
 ];
 
 const ROW_2: SeatDef[] = [
@@ -27,8 +24,20 @@ const ROW_2: SeatDef[] = [
   { col: 1, status: "occupied" },
   { col: 2, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
   { col: 3, status: "empty",    scoreType: "I", scoreVal: 1, tooltip: "Sit by yourself (+1I)" },
-  { col: 4, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
-  { col: 5, status: "occupied" },
+];
+
+const ROW_3: SeatDef[] = [
+  { col: 0, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
+  { col: 1, status: "occupied" },
+  { col: 2, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
+  { col: 3, status: "empty",    scoreType: "I", scoreVal: 1, tooltip: "Sit by yourself (+1I)" },
+];
+
+const ROW_4: SeatDef[] = [
+  { col: 0, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
+  { col: 1, status: "occupied" },
+  { col: 2, status: "empty",    scoreType: "E", scoreVal: 1, tooltip: "Sit next to someone (+1E)" },
+  { col: 3, status: "empty",    scoreType: "I", scoreVal: 1, tooltip: "Sit by yourself (+1I)" },
 ];
 
 
@@ -44,22 +53,22 @@ function Seat({ seat, isSelected, onSelect }: SeatProps) {
 
   return (
     <div
-      className={`seat seat--${status}`}
+      className={`busSeat busSeat--${status}`}
       title={seat.tooltip}
       onClick={() => seat.status === "empty" && onSelect(seat)}
     >
-      <span className="seat-shape" />
+      <span className="busSeat-shape" />
     </div>
   );
 }
 
 
 // Main page
-interface TrainSeatingProps {
+interface BusSeatingProps {
   onNext?: () => void; 
 }
 
-export default function TrainSeating({ onNext }: TrainSeatingProps) {
+export default function BusSeating({ onNext }: BusSeatingProps) {
   const { addScore } = useMBTI();
 
   const [selectedSeat, setSelectedSeat] = useState<SeatDef | null>(null);
@@ -103,35 +112,40 @@ export default function TrainSeating({ onNext }: TrainSeatingProps) {
     : "";
 
   return (
-    <div className="ts-page">
+    <div className="bs-page">
 
       {/* ── PROMPT ── */}
-      <div className="ts-prompt-wrapper">
-        <div className="ts-prompt-bubble">
-          <p className="ts-prompt-label">🚃 Train Station</p>
-          <p className="ts-prompt-text">
-            You board the train.<br />Where do you sit?
+      <div className="bs-prompt-wrapper">
+        <div className="bs-prompt-bubble">
+          <p className="bs-prompt-label">🚃 Bus Station</p>
+          <p className="bs-prompt-text">
+            You board the bus.<br />Where do you sit?
           </p>
-          <p className="ts-prompt-sub">Click an empty seat to choose your spot!</p>
+          <p className="bs-prompt-sub">Click an empty seat to choose your spot!</p>
         </div>
       </div>
 
-      {/* ── TRAIN SCENE ── */}
-      <div className="ts-train-scene">
-        <div className="ts-train-placeholder">
-          <span className="ts-train-label">METRO LINE 404</span>
-          <div className="ts-window-row">
-            <div className="ts-win" />
-            <div className="ts-win" />
-            <div className="ts-win" />
-            <div className="ts-win" />
+      {/* ── BUS SCENE ── */}
+      <div className="bs-bus-scene">
+        <div className="bs-bus-placeholder">
+          <span className="bs-bus-label">45 - TO CSULB</span>
+          <div className="bs-window-row">
+            <div className="bs-win" />
+            <div className="bs-win" />
+            <div className="bs-win" />
+            <div className="bs-win" />
           </div>
-          <div className="ts-floor" />
+          <div className="bs-window-row bs-window-row--bottom">
+            <div className="bs-win" />
+            <div className="bs-win" />
+            <div className="bs-win" />
+            <div className="bs-win" />
+          </div>
         </div>
 
-        {/* Seats overlaid on the train */}
-        <div className="ts-seats-overlay">
-          <div className="ts-seat-row">
+        {/* Seats overlaid on the bus */}
+        <div className="bs-seats-overlay">
+          <div className="bs-seat-row">
             {ROW_1.map((seat) => (
               <Seat
                 key={`r1-c${seat.col}`}
@@ -145,11 +159,39 @@ export default function TrainSeating({ onNext }: TrainSeatingProps) {
               />
             ))}
           </div>
-          <div className="ts-seat-spacer" />
-          <div className="ts-seat-row">
+          <div className="bs-seat-row">
             {ROW_2.map((seat) => (
               <Seat
                 key={`r2-c${seat.col}`}
+                seat={seat}
+                isSelected={
+                selectedSeat?.col === seat.col &&
+                selectedSeat?.scoreType === seat.scoreType &&
+                ROW_2.includes(seat)   // ← was ROW_1
+                }
+                onSelect={handleSelectSeat}
+            />
+            ))}
+          </div>
+          <div className="bs-seat-row">
+            {ROW_3.map((seat) => (
+              <Seat
+                key={`r3-c${seat.col}`}
+                seat={seat}
+                isSelected={
+                selectedSeat?.col === seat.col &&
+                selectedSeat?.scoreType === seat.scoreType &&
+                ROW_3.includes(seat)   // ← was ROW_1
+                }
+                onSelect={handleSelectSeat}
+            />
+            ))}
+          </div>
+          <div className="bs-seat-spacer" />
+          <div className="bs-seat-row">
+            {ROW_4.map((seat) => (
+              <Seat
+                key={`r4-c${seat.col}`}
                 seat={{ ...seat, col: seat.col + 10 }} // offset col id so row 2 seats are unique
                 isSelected={
                   selectedSeat !== null &&
@@ -164,15 +206,15 @@ export default function TrainSeating({ onNext }: TrainSeatingProps) {
         </div>
       </div>
 
-      <p className="ts-hint">🪑 Hover to preview · Click to choose your seat</p>
+      <p className="bs-hint">🪑 Hover to preview · Click to choose your seat</p>
 
       {/* ── NEXT BUTTON ── */}
-      <div className="ts-btn-area">
+      <div className="bs-btn-area">
         {/* {selectedSeat && (
-          <div className="ts-selection-info">{selectionLabel}</div>
+          <div className="bs-selection-info">{selectionLabel}</div>
         )} */}
         <button
-          className="ts-btn-next"
+          className="bs-btn-next"
           disabled={!selectedSeat}
           onClick={handleNext}
         >

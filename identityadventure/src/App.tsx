@@ -3,8 +3,9 @@ import './App.css'
 
 import { StartPage } from './scenes/StartPage'
 import { PresentationPage } from './scenes/PresentationPage'
-import { ChooseItemPage } from './scenes/ChooseItemPage'
-import  TrainSeatingPage  from './scenes/TrainSeatingPage'  
+import ChooseItemPage from './scenes/ChooseItemPage'
+import TrainSeatingPage from './scenes/TrainSeatingPage'  
+import BusSeatingPage from './scenes/BusSeatingPage'
 import { ResultPage } from './scenes/ResultPage'
 
 function App() {
@@ -29,7 +30,11 @@ function App() {
       )}
 
       {scene === "train-seating" && (
-        <TrainSeatingPage onNext={() => setScene("result")} />
+        <TrainSeatingPage onNext={() => setScene("bus-seating")} />
+      )}
+
+      {scene === "bus-seating" && (
+        <BusSeatingPage onNext={() => setScene("result")} />
       )}
     </>
   );
